@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
+    dotenv (2.1.1)
+    faraday (0.10.1)
+      multipart-post (>= 1.2, < 3)
+    koala (2.4.0)
+      addressable
+      faraday
+      multi_json (>= 1.3.0)
+    multi_json (1.12.1)
+    multipart-post (2.0.0)
+    public_suffix (2.0.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dotenv
+  koala (~> 2.2)
+
+BUNDLED WITH
+   1.13.6
