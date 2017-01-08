@@ -1,5 +1,3 @@
-require 'httparty'
-
 class Client
   include HTTParty
   base_uri "https://graph.facebook.com/v2.8"
@@ -12,7 +10,7 @@ class Client
     @page_id = page_id
   end
 
-  #refactor: use HTTParty to accept array of params and interpolates into url
+  #TODO refactor: use HTTParty to accept array of params and interpolate into url
   def get_posts(page_id, limit)
     response = Client.get("/#{page_id}?fields=posts.limit(#{limit})%7Btype%2Creactions%7Bid%2Ctype%7D%2Ccomments%7Bid%7D%7D")
     if response.success?
