@@ -1,12 +1,17 @@
 require 'csv'
 require 'pp'
 require 'dotenv'
-require 'jsonpath'
 Dotenv.load
 
 require_relative 'post_processor'
 
-#TODO replace all double quotes (except interpolations) w/ single quotes
-#TODO input.txt and format of expected input (and write this up in README),name of output file and where to find it
+#TODO in comments, replace dummy user_id with actual user_id
 
-PostProcessor.new(305736219467790, 10).persist
+begin
+  CSV.foreach('../input.csv') do |row|
+    id, number_of_pages = row
+    PostProcessor.new(id, number_of_pages).persist
+  end
+rescue Exception => e
+  puts e.message
+end
