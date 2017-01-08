@@ -16,9 +16,9 @@ class Client
   def get_posts(page_id, limit)
     response = Client.get("/#{page_id}?fields=posts.limit(#{limit})%7Btype%2Creactions%7Bid%2Ctype%7D%2Ccomments%7Bid%7D%7D")
     if response.success?
-      response["posts"]["data"]
+      response['posts']['data']
     else
-      raise.response
+      raise "Error: #{response.code}"
     end
   end
 
