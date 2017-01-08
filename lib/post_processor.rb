@@ -9,7 +9,7 @@ class PostProcessor
   end
 
   def persist
-    CSV.open('../output.csv', 'w') do |csv|
+    CSV.open('../output.csv', 'a+') do |csv|
       @posts.each do |post|
         Post.new(post).csv_lines.each { |line| csv << line }
       end

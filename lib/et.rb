@@ -7,6 +7,7 @@ Dotenv.load
 require_relative 'post_processor'
 
 #TODO in comments, replace dummy user_id with actual user_id
+#TODO tests
 
 begin
   CSV.foreach('../input.csv') do |row|
