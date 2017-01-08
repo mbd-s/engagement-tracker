@@ -4,17 +4,14 @@ require_relative 'reaction'
 require_relative 'comment'
 
 class PostProcessor
-  def initialize(*page_ids, limit)
-    posts = []
-    page_ids.each { |id| posts << Client.new(id, limit).post_nodes }
-
-    @posts = posts.flatten
+  def initialize(page_id, limit)
+    @posts = Client.new(page_id, limit).post_nodes.flatten
   end
 
   def persist
     CSV.open('../output.csv', 'w') do |csv|
       @posts.each do |post|
-        Post.new(post).to_csv.each { |p| csv << p }
+        Post.new(post).csv_lines.each { |line| csv << line }
       end
       puts "#{@posts.size} posts processed."
     end
