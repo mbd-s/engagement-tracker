@@ -4,7 +4,7 @@ require 'httparty'
 require 'dotenv'
 Dotenv.load
 
-require_relative 'post_processor'
+require_relative 'engagement_tracker/post_processor'
 
 #TODO pagination
 #TODO tests
