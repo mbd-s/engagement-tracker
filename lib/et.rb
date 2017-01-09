@@ -6,9 +6,9 @@ Dotenv.load
 
 require_relative 'post_processor'
 
-#TODO in comments, replace dummy user_id with actual user_id
 #TODO pagination
 #TODO tests
+#TODO refactor: use HTTParty to accept array of params and interpolate into url
 
 begin
   CSV.foreach('../input.csv') do |row|
