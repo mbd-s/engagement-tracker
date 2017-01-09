@@ -8,6 +8,6 @@ class Reaction
   end
 
   def to_csv
-    [@user_id, @page_id, @post_id, @post_type, "reaction", @interaction_subtype]
+    [@user_id, @page_id, @post_id, @post_type, 'reaction', @interaction_subtype]
   end
 end
