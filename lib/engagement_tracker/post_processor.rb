@@ -9,12 +9,23 @@ class PostProcessor
   end
 
   def persist
+    i = 0
     CSV.open('../output.csv', 'a+') do |csv|
       @posts.each do |post|
-        Post.new(post).csv_lines.each { |line| csv << line }
+        Post.new(post).csv_lines.each do |line|
+          csv << line
+          i += 1
+        end
       end
-      puts "#{@posts.size} posts processed."
+      puts "\nProcessed #{@posts.size} posts from Facebook page no. #{parse_page_id(@posts)}."
+      puts "Collected #{i} reactions and comments.\n"
     end
+  end
+
+  private
+
+  def parse_page_id posts
+    posts[0]['id'].split(/_/)[0]
   end
 
 end
