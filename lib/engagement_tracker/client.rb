@@ -1,3 +1,5 @@
+require 'json'
+
 class Client
   include HTTParty
   base_uri "https://graph.facebook.com/v2.8"
@@ -15,7 +17,8 @@ class Client
     if response.success?
       response['posts']['data']
     else
-      raise "Error: #{response.code}"
+      response = JSON.parse(response)
+      raise "Error: #{response['error']['message'].to_s}."
     end
   end
 
