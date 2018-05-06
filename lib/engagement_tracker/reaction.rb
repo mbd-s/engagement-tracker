@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reaction
   def initialize(page_id, post_id, post_type, node)
     @page_id = page_id

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post
   attr_reader :reactions, :comments
   def initialize(node)
@@ -7,7 +9,7 @@ class Post
   end
 
   def csv_lines
-    reactions(@node).map { |r| r.to_csv } + comments(@node).map { |c| c.to_csv }
+    reactions(@node).map(&:to_csv) + comments(@node).map(&:to_csv)
   end
 
   private
@@ -22,7 +24,7 @@ class Post
 
   def comments(node)
     if node['comments']
-      node['comments']['data'].map { |c| Comment.new(@page_id, @id, @post_type, c)}
+      node['comments']['data'].map { |c| Comment.new(@page_id, @id, @post_type, c) }
     else
       []
     end

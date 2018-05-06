@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'json'
 
 class Client
   include HTTParty
-  base_uri "https://graph.facebook.com/v2.8"
-  default_params :access_token => ENV['FACEBOOK_ACCESS_TOKEN']
+  base_uri 'https://graph.facebook.com/v2.8'
+  default_params access_token: ENV['FACEBOOK_ACCESS_TOKEN']
 
   attr_reader :post_nodes, :page_id
 
@@ -22,5 +24,4 @@ class Client
       raise "Error: #{response.code}"
     end
   end
-
 end

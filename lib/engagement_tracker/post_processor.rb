@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'client'
 require_relative 'post'
 require_relative 'reaction'
@@ -24,8 +26,7 @@ class PostProcessor
 
   private
 
-  def parse_page_id posts
+  def parse_page_id(posts)
     posts[0]['id'].split(/_/)[0]
   end
-
 end
